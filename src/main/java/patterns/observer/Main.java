@@ -1,6 +1,6 @@
-package patterns.viewer;
+package patterns.observer;
 
-import patterns.viewer.example.*;
+import patterns.observer.example.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,10 @@ public class Main {
         weatherSensor.registerObserver(displayerCondition);
         weatherSensor.registerObserver(displayerForecast);
         weatherSensor.measurementChanged();
-
         System.out.println(weatherSensor.getWeatherCondition());
+
+        System.out.println();
+        weatherSensor.removeObserver(displayerForecast);
+        weatherSensor.measurementChanged();
     }
 }

@@ -1,4 +1,4 @@
-package patterns.viewer.example;
+package patterns.observer.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class WeatherSensor implements Subject{
     private List<Observer> observers = new ArrayList<>();
     private WeatherCondition weatherCondition;
 
-    public void determineWeatherCondition(){
+    private void determineWeatherCondition(){
         this.weatherCondition = new WeatherCondition();
         weatherCondition.update(1,1,1);
     }
@@ -19,7 +19,7 @@ public class WeatherSensor implements Subject{
 
     @Override
     public void notifyObservers() {
-        observers.forEach(observer -> observer.update());
+        observers.forEach(observer -> observer.update(weatherCondition.clone()));
     }
 
     @Override
